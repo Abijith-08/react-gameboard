@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import Tile from "./Tile"
 
-// Function that generates a sequence of alternating black and white tiles
-// and stores them in an array. It takes the expected number of rows and columns as arguments,
+// Function that takes the expected number of rows and columns as arguments,
 // then generates a checkered tile grid to the given specifications.
-// It includes logic to account for an even number of tiles per row (in this case the pattern
-// needs to be switched every row)
 function tileFactory(rowNumber, colNumber) {
 
     // Raise a flag when the colNumber is even
