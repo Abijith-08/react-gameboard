@@ -6,19 +6,19 @@ import { AppWrapper } from "./styles";
 function checkedGrid(rowNumber, colNumber) {
 
     // Raise a flag when the colNumber is even
-    let isEven = (colNumber % 2 === 0) ? true : false
+    const isEven = (colNumber % 2 === 0) ? true : false
 
     // Generate an array of color values that alternate between black (#000000) and white (#FFFFFF)
-    var colorArray = [];
+    let colorArray = [];
     let tileMarker = "A"
     let colorEntry = ""
     if (isEven) {
         // Even number of tiles per row, sequence must switch according to row type
         let rowType = "A"
-        for (var j = 0; j < rowNumber; j++) {
+        for (let j = 0; j < rowNumber; j++) {
             if (rowType === "A") {
                 // Row type "A" will follow the normal white-black sequence of colours
-                for (var i = 0; i < colNumber; i++) {
+                for (let i = 0; i < colNumber; i++) {
                     if (tileMarker === "A") {
                         colorEntry = "#FFFFFF"
                         tileMarker = "B"
@@ -32,7 +32,7 @@ function checkedGrid(rowNumber, colNumber) {
                 rowType = "B"
             } else {
                 // Row type "B" must follow a reversed black-white sequence
-                for (var i = 0; i < colNumber; i++) {
+                for (let i = 0; i < colNumber; i++) {
                     if (tileMarker === "A") {
                         colorEntry = "#000000"
                         tileMarker = "B"
@@ -48,8 +48,8 @@ function checkedGrid(rowNumber, colNumber) {
         }
     } else {
         // Odd number of tiles per row, so same white-black sequence throughout
-        for (var j = 0; j < rowNumber; j++) {
-            for (var i = 0; i < colNumber; i++) {
+        for (let j = 0; j < rowNumber; j++) {
+            for (let i = 0; i < colNumber; i++) {
 
                 if (tileMarker === "A") {
                     colorEntry = "#FFFFFF"
@@ -74,7 +74,7 @@ function tileGrouper(tileArray, colNumber) {
     let finalArray = []
     let rowArray = []
     let rowCount = 0
-    for (var i = 0; i < tileArray.length+1; i++) {
+    for (let i = 0; i < tileArray.length+1; i++) {
 
         // Condition executes when the end of a row is reached
         if ((i % colNumber === 0) && (i !== 0)) {
@@ -130,7 +130,7 @@ class App extends Component {
         }
 
         // Push a key-value pair into the "containers" variable for each tile
-        for (var i = 1; i < colourGrid.length; i++) {
+        for (let i = 1; i < colourGrid.length; i++) {
             // Programmatically generate the key name according to the tile number
             let containerName = `tile${i}`
             containers[containerName] = []
@@ -138,8 +138,8 @@ class App extends Component {
 
         // Use the Tile element along with the array of alternating colour values in colourGrid
         // to create a 1D array of tile objects with alternating colours
-        var tileArray = [];
-        for (var i = 0; i < colourGrid.length; i++) {
+        let tileArray = [];
+        for (let i = 0; i < colourGrid.length; i++) {
             let tileName = `tile${i+1}`
             tileArray.push(
                 <Tile 
@@ -165,7 +165,7 @@ class App extends Component {
         )
 
         // Group the tiles into their respective rows for correct rendering
-        var finalArray = tileGrouper(tileArray, columns)
+        let finalArray = tileGrouper(tileArray, columns)
 
         return (
             <AppWrapper>
