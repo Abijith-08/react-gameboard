@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Tile from "./Tile";
+import { AppWrapper } from "./styles";
 
 // Function that generates an array of colour values representing a checkered grid
 function checkedGrid(rowNumber, colNumber) {
@@ -115,15 +116,6 @@ class App extends Component {
 
     render() {
 
-        var appStyle = {
-            height: 520,
-            width: 480,
-            backgroundColor: "#00FF00",
-            padding: "5px 5px 5px 5px",
-            WebkitFilter: "drop-shadow(0px 0px 5px #666)",
-            filter: "drop-shadow(0px 0px 5px #666)",
-        };
-
         // The rows and columns expected for the checkered grid are passed in as arguments
         let rows = this.props.rows
         let columns = this.props.columns
@@ -163,15 +155,11 @@ class App extends Component {
         // For each piece specified in the initial state-object, generate an appropriate container
         // and push it into the key-value pair of "containers"
         this.state.pieces.forEach(
-
             (t) => {
-                
                 containers[t.category].push(
-
                     //<div key={t.name}>
                         t.name
                     //</div>
-                
                 )
             }
         )
@@ -180,17 +168,13 @@ class App extends Component {
         var finalArray = tileGrouper(tileArray, columns)
 
         return (
-            <div style={appStyle}>
-            
+            <AppWrapper>
                 {finalArray}
-
                 <div>
                     {containers.offBoard}
                 </div>
-            
-            </div>
+            </AppWrapper>
         );
-    
     }
 }
 
